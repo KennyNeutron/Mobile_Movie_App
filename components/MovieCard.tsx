@@ -27,10 +27,19 @@ const MovieCard = ({
           {title}
         </Text>
         <View className="flex-row items-center justify-start gap-x-1">
-          <Image source={icons.star} className="size-4" />
-          <Text className="text-xs text-white font-bold uppercase">
-            {Math.round(vote_average / 2)}
-          </Text>
+          {[...Array(5)].map((_, index) => {
+            const rating = vote_average / 2;
+            const isFilled = index < Math.floor(rating);
+            const isHalf = index === Math.floor(rating) && rating % 1 >= 0.5;
+
+            return (
+              <Image
+                key={index}
+                source={icons.star}
+                className={`size-4 ${isFilled || isHalf ? "tintColor-yellow-400" : "tintColor-gray-500"}`}
+              />
+            );
+          })}
         </View>
         <View className="flex-row items-center justify-between ">
           <Text className="text-xs text-light-300 font-medium mt-1">
