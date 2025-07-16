@@ -17,12 +17,11 @@ const SearchBar = ({ placeholder, onPress }: Props) => {
         tintColor="#AB8BFF"
       />
       <TextInput
-        onPress={onPress}
+        style={{ flex: 1, paddingLeft: 8, color: "#FFF" }}
         placeholder={placeholder}
-        value=""
-        onChangeText={() => {}}
         placeholderTextColor="#A8B5DB"
-        className="flex-1 ml-2 text-white"
+        onPress={onPress}
+        onChangeText={() => {}}
       />
     </View>
   );
